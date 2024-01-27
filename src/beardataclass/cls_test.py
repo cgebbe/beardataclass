@@ -1,6 +1,8 @@
-from beardataclass.cls import BearDataClass
-import pandas as pd
 import dataclasses
+
+import pandas as pd
+
+from beardataclass.cls import BearDataClass
 
 
 @dataclasses.dataclass
@@ -19,7 +21,7 @@ def test_cls():
             "x": [1, 3],
             "y": [2, 4],
             "z": [0.0, 0.0],
-        }
+        },
     )
     pd.testing.assert_frame_equal(df, expected)
 

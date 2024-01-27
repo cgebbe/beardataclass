@@ -1,106 +1,103 @@
+[build-system]
+build-backend = "pdm.backend"
+requires = ["pdm-backend"]
+
 [project]
-name = "BearDataClass"
-version = "0.1.0"
-description = "Default template for PDM package"
 authors = [
-    {name = "Christian Gebbe", email = ""},
+  {name = "Christian Gebbe", email = ""}
 ]
 dependencies = [
-    "pandas>=2.2.0",
+  "pandas>=2.2.0"
 ]
-requires-python = ">=3.11"
-readme = "README.md"
+description = ""
 license = {text = "MIT"}
+name = "BearDataClass"
+readme = "README.md"
+requires-python = ">=3.11"
+version = "0.1.0"
 
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
+[[tool.mypy.overrides]]
+module = [
+  "assertpy",
+  "toolz"
+]
 
 [tool.pdm]
 distribution = true
 
 [tool.pdm.dev-dependencies]
-test = [
-    "pytest>=8.0.0",
-]
-type_check = [
-    "mypy>=1.8.0",
-    "pandas-stubs>=2.1.4.231227",
+check = [
+  "mypy>=1.8.0",
+  "pandas-stubs>=2.1.4.231227"
 ]
 dev = [
-    "ipykernel>=6.29.0",
+  "ipykernel>=6.29.0"
+]
+# from https://docs.astral.sh/ruff/configuration/
+lint = [
+  "pre-commit>=3.6.0"
+]
+test = [
+  "pytest>=8.0.0"
 ]
 
+[tool.pdm.scripts]
+all = {composite = ["lint", "check", "test"]}
+check = "mypy src"
+lint = "pre-commit run --all-files"
+test = "pytest -vv src"
 
-# from https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
 exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".git-rewrite",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".pytype",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "venv",
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv"
 ]
-
-
+indent-width = 4
 # Same as Black.
 line-length = 88
-indent-width = 4
-
-[tool.ruff.lint]
-select = ["ALL"]
-
-
-ignore = [
-    "D", # pydocstyle
-    "ANN", # (type) annotations
-    "T201", # allow print
-    "T203", # allow pprint
-    "TD", # allow simple TODOs and fixmes
-    "FIX", # allow FIXMEs
-    "S101", # allow asserts
-    "PD901", # df is a bad variable name
-    "G004", # allow f-strings in logging
-]
-
-# Allow fix for all enabled rules (when `--fix`) is provided.
-fixable = ["ALL"]
-unfixable = []
-
 
 [tool.ruff.format]
-# Like Black, use double quotes for strings.
-quote-style = "double"
-
 # Like Black, indent with spaces, rather than tabs.
 indent-style = "space"
-
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+# Like Black, use double quotes for strings.
+quote-style = "double"
 # Like Black, respect magic trailing commas.
 skip-magic-trailing-comma = false
 
-# Like Black, automatically detect the appropriate line ending.
-line-ending = "auto"
-
-
-[[tool.mypy.overrides]]
-module = [
-    "assertpy",
-    "toolz",
-    ]
+[tool.ruff.lint]
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+ignore = [
+  "D",  # pydocstyle
+  "ANN",  # missing type annotations
+  "T201",  # allow print
+  "T203",  # allow pprint
+  "TD",  # allow simple TODOs and FIXMEs
+  "FIX",  # allow FIXMEs
+  "S101",  # allow asserts
+  "PD901",  # df is a bad variable name
+  "G004"  # allow f-strings in logging
+]
+select = ["ALL"]
+unfixable = []

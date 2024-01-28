@@ -1,6 +1,10 @@
+from __future__ import annotations
+
 import dataclasses
-from collections.abc import Iterable
-from typing import ClassVar, Protocol, TypeVar
+from typing import TYPE_CHECKING, ClassVar, Protocol, TypeVar
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 import pandas as pd
 

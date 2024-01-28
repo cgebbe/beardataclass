@@ -7,13 +7,13 @@ authors = [
   {name = "Christian Gebbe", email = ""}
 ]
 dependencies = [
-  "pandas>=2.2.0"
+  "pandas"
 ]
 description = ""
 license = {text = "MIT"}
 name = "BearDataClass"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.8"
 version = "0.1.0"
 
 [[tool.mypy.overrides]]
@@ -27,18 +27,18 @@ distribution = true
 
 [tool.pdm.dev-dependencies]
 check = [
-  "mypy>=1.8.0",
-  "pandas-stubs>=2.1.4.231227"
+  "mypy",
+  "pandas-stubs"
 ]
 dev = [
-  "ipykernel>=6.29.0"
+  "ipykernel"
 ]
 # from https://docs.astral.sh/ruff/configuration/
 lint = [
-  "pre-commit>=3.6.0"
+  "pre-commit"
 ]
 test = [
-  "pytest>=8.0.0"
+  "pytest"
 ]
 
 [tool.pdm.scripts]

@@ -17,6 +17,20 @@ requires-python = ">=3.8"
 urls = {homepage = "https://github.com/cgebbe/beardataclass"}
 version = "0.1.0"
 
+[tool.commitizen]
+name = "cz_customize"
+tag_format = "$version"
+update_changelog_on_bump = true
+version_provider = "pep621"
+version_scheme = "pep440"
+
+[tool.commitizen.customize]
+# PROBLEM: commitizen only bumps version for BREAKING, feat, fix, refactor, perf
+# SOLUTION: see  https://github.com/commitizen-tools/commitizen/issues/781#issuecomment-1790555405
+bump_map = {feat = "MINOR", fix = "PATCH", ci = "PATCH", build = "PATCH", perf = "PATCH", refactor = "PATCH", 'chore' = "PATCH", 'style' = "PATCH", 'test' = "PATCH", 'docs' = "PATCH"}
+bump_pattern = '^(feat|fix|ci|build|perf|refactor|chore|style|test|docs)'
+schema_pattern = '^(build|ci|docs|feat|fix|perf|refactor|style|test|chore|revert|bump|)(\(\S+\))?\:?\s.*'
+
 [[tool.mypy.overrides]]
 module = [
   "assertpy",
@@ -30,6 +44,9 @@ distribution = true
 excludes = ["**/*_test.py"]
 
 [tool.pdm.dev-dependencies]
+bump = [
+  "commitizen"
+]
 check = [
   "mypy",
   "pandas-stubs"

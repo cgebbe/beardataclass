@@ -17,7 +17,9 @@ repos:
     rev: v2.37.0
     hooks:
       - id: commitizen-branch
-        args: [--rev-range, origin/main..HEAD]
+        # PROBLEM: `--rev-range origin/main..HEAD` fails if run on main
+        # HACKY SOLUTION: pick `--rev-range origin/main~1..HEAD`
+        args: [--rev-range, origin/main~1..HEAD]
 
   ########## FORMAT
   - repo: https://github.com/antonbabenko/pre-commit-terraform

@@ -25,6 +25,9 @@ module = [
 [tool.pdm]
 distribution = true
 
+[tool.pdm.build]
+excludes = ["**/*_test.py"]
+
 [tool.pdm.dev-dependencies]
 check = [
   "mypy",

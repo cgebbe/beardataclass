@@ -1,2 +1,5 @@
+[install]
+cache = true
+
 [strategy]
 save = "wildcard"

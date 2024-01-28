@@ -15,7 +15,7 @@ name = "BearDataClass"
 readme = "README.md"
 requires-python = ">=3.8"
 urls = {homepage = "https://github.com/cgebbe/beardataclass"}
-version = "0.2.0"
+version = "0.2.1"
 
 [tool.commitizen]
 name = "cz_customize"

@@ -1,3 +1,11 @@
+## 0.2.1 (2024-01-28)
+
+
+- Merge pull request #4 from cgebbe/ci/add-bumping-and-publishing
+- Ci/add bumping and publishing
+- ci: do not run branch workflow upon tag pushes
+- fix: make prettier ignore changelog
+
 ## 0.2.0 (2024-01-28)
 
 

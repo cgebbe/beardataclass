@@ -16,6 +16,8 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
         with:
+          # NOTE: This seems to be necessary for commitizen to push later on?!
+          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           # PROBLEM: by default fetch-depth=1, but then commitizen precommit fails
           # (TEMPORARY) SOLUTION: fetch whole tree
           fetch-depth: 0
